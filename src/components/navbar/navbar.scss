@@ -1,0 +1,55 @@
+.navbar {
+    &__first-level {
+        background-color: #ffffff;
+
+        &-menu {
+            width: 100%;
+            display: flex;
+            justify-content: left; //избыточно
+            align-items: center; //избыточно
+            min-width: 320px;
+            max-width: 1080px;
+            height: 69px;
+            margin: 0 auto;
+        }
+
+        &-link {
+            display: flex;
+            align-items: center;
+            border-left: 1px solid $reds;
+            width: 197px;
+            height: 100%;
+            padding: 0 16px;
+            text-decoration: none;
+            color: #a8a8a8;
+        }
+    }
+
+    &__second-level {
+        background-color: #144f7f;
+
+        &-menu {
+            width: 100%;
+            display: flex;
+            justify-content: left;  //избыточно
+            align-items: center;    //избыточно
+            min-width: 320px;
+            max-width: 1080px;
+            height: 72px;
+            margin: 0 auto;
+        }
+
+        &-link {
+            width: 176px;
+            height: 100%;
+            text-decoration: none;
+            color: #a8a8a8;
+        }
+    }
+}
+
+.link {
+    &__icon {
+    margin-right: 12px;
+    }
+}
