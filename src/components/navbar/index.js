@@ -1,8 +1,15 @@
 import React, { memo, useCallback } from 'react';
 import './navbar.scss';
 import { NavLink, Switch, Route, useParams } from 'react-router-dom';
-import DataServices from '../service'
+import DataServices from '../service';
+import { createUseStyles } from 'react-jss';
+import style from './style'
 
+
+
+const useStyles_FirstLevelNavBar = createUseStyles(style.firstLevel);
+const useStyles_SecondLevelNavBar = createUseStyles(style.seconsLevel);
+//const useStyles_FirstLevelNavBar = createUseStyles(style.firstLevel);
 
 
 const NavBar = () => {
@@ -19,15 +26,17 @@ const NavBar = () => {
                 </Route>
             </Switch>
         </nav>
+        
     )
 }
 
 
 
 const FirstLevelNavBar = memo(({ listData }) => {
+    let { wrapper, menu } = useStyles_FirstLevelNavBar();
     return (
-        <div className='navbar__first-level'>
-            <div className='navbar__first-level-menu'>
+        <div className={wrapper}>
+            <div className={menu}>
                 {!!listData.length &&
                     listData.map((item) => (
                         <LinkNavBar
@@ -48,11 +57,12 @@ const FirstLevelNavBar = memo(({ listData }) => {
 const SecondLevelNavBar = memo(({ getSubmenu }) => {
     let { aciveMenuName } = useParams();
     let listSubmenu = getSubmenu(aciveMenuName);
+    let { wrapper, menu } = useStyles_SecondLevelNavBar();
     return (
         <>
             {!!listSubmenu.length &&
-                <div className='navbar__second-level'>
-                    <div className='navbar__second-level-menu'>
+                <div className={wrapper}>
+                    <div className={menu}>
                         {listSubmenu.map((item) => (
                             <LinkNavBar
                                 key={item._id}

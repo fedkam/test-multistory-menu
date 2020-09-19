@@ -1,15 +1,18 @@
 import React from 'react';
-import './app.scss';
 import NavBar from '../navbar';
+import { resetCss } from '../styles-constant/resetCss';
+import { style } from './style'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { createUseStyles } from 'react-jss';
 
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 
-
-function App() {
+const App = () => {
+  createUseStyles(resetCss)();
+  const { app } = createUseStyles(style)();
   return (
-    <BrowserRouter>
-      <div className='app'>
+    <div className={app}>
+      <BrowserRouter>
         <header>
           <NavBar />
         </header>
@@ -18,10 +21,10 @@ function App() {
             <Route path='/'><div>main</div></Route>
           </Switch>
         </main>
-      </div>
-    </BrowserRouter>
-  );
-}
+      </BrowserRouter>
+    </div>
+  )
+};
 
 
 
