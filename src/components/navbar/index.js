@@ -154,6 +154,7 @@ const LinkItemMenu = ({ href = '#', title = '', IconTitle }) => {
 
 
 const DropDownItemMenu = ({ title = '', IconTitle }) => {
+    const itemStyle = useStyles_Link();
     return (
         <div>
             <TitleItemMenu
