@@ -47,19 +47,19 @@ export default class DataService {
             _id: 301,
             recId: 3,
             label: 'Перевозка пищевых грузов',
-            icon: IconChemical
+            icon: IconFood
         },
         {
             _id: 302,
             recId: 3,
             label: 'Перевозка сжиженных газов',
-            icon: IconFood
+            icon: IconGas
         },
         {
             _id: 303,
             recId: 3,
             label: 'Перевозка химических грузов',
-            icon: IconGas
+            icon: IconChemical
         }
     ];
 
@@ -69,7 +69,7 @@ export default class DataService {
 
     getSubmenu = (name) => {
         let foundMenuItem = this.DATA_FIRSTLEVEL_MENU.find((el) => el.name == name);
-        if(foundMenuItem === undefined) return false;
+        if (foundMenuItem === undefined) return false;
         let submenu = this.DATA_SECONDLEVEL_MENU.filter((item) => item.recId && (item.recId === foundMenuItem._id)); //проверяем сущ .recId далее сравниваеем перееданный и текущий)
         if (submenu.length) {
             return submenu;

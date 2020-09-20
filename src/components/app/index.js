@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavBar from '../navbar';
 import { resetCss } from '../styles-constant/resetCss';
 import { style } from './style'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { createUseStyles } from 'react-jss';
 
-
+const resetStyle = createUseStyles(resetCss);
 
 const App = () => {
-  createUseStyles(resetCss)();
   const { app } = createUseStyles(style)();
+  resetStyle();
   return (
     <div className={app}>
       <BrowserRouter>
