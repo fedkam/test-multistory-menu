@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import { NavLink, Switch, Route, useParams } from 'react-router-dom';
+import { Switch, Route, useParams } from 'react-router-dom';
 import DataServices from '../service';
 import { createUseStyles } from 'react-jss';
 import style from './style';
@@ -34,7 +34,7 @@ const NavBar = () => {
 
 
 const FirstLevelNavBar = memo(({ listData }) => {
-    let { wrapper, menu, link, active } = useStyles_FirstLevelNavBar();
+    let { wrapper, menu, itemMenu, active } = useStyles_FirstLevelNavBar();
     return (
         <div className={wrapper}>
             <div className={menu}>
@@ -45,7 +45,7 @@ const FirstLevelNavBar = memo(({ listData }) => {
                             href={item.name}
                             title={item.label}
                             IconTitle={item.icon}
-                            css={{ link: link, active: active }}
+                            css={{ itemMenu: itemMenu, active: active }}
                         />
                     ))
                 }
@@ -59,7 +59,7 @@ const FirstLevelNavBar = memo(({ listData }) => {
 const SecondLevelNavBar = memo(({ getSubmenu }) => {
     let { aciveMenuName } = useParams();
     let listSubmenu = getSubmenu(aciveMenuName);
-    let { wrapper, menu, link, active } = useStyles_SecondLevelNavBar();
+    let { wrapper, menu, itemMenu } = useStyles_SecondLevelNavBar();
     return (
         <>
             {!!listSubmenu.length &&
@@ -70,8 +70,7 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
                                 key={item._id}
                                 title={item.label}
                                 IconTitle={item.icon}
-                                isOpenDropDown={false}
-                                css={{ link: link, active: active }}
+                                css={{ itemMenu: itemMenu }}
                             />
                         ))}
                     </div>

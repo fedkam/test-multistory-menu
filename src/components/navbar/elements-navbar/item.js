@@ -2,19 +2,19 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import style from '../style';
 
-const useStyles_ItemMenu = createUseStyles(style.link);
+const useStyles_ItemMenu = createUseStyles(style.itemMenu);
 
 
 export const TitleItemMenu = ({ IconTitle, title}) => {
-    const itemStyle = useStyles_ItemMenu();
+    const itemMenu = useStyles_ItemMenu();
     return (
         <>
             {IconTitle &&
-                <div className={itemStyle.iconLogo} >
+                <div className={itemMenu.iconLogo} >
                     <IconTitle />
                 </div>
             }
-            <p className={itemStyle.title}>
+            <p className={itemMenu.title}>
                 {title}
             </p>
         </>

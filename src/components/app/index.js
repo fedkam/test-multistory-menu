@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import NavBar from '../navbar';
 import { resetCss } from '../styles-constant/resetCss';
 import { style } from './style'

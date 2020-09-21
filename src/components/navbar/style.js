@@ -15,7 +15,7 @@ const getMenuStyle = () => (
     }
 )
 
-const getLinkStyle = ({ width, colorVerticalDevider, color }) => ({
+const getItemMenuStyle = ({ width, colorVerticalDevider, color }) => ({
     display: `flex`,
     alignItems: `center`,
     borderLeft: `1px solid ${colorVerticalDevider || 'grey'}`,
@@ -30,8 +30,8 @@ const getLinkStyle = ({ width, colorVerticalDevider, color }) => ({
 const firstLevel = {
     wrapper: { backgroundColor: globalStyle.colors.colorWhite },
     menu: getMenuStyle(),
-    link: {
-        ...getLinkStyle({
+    itemMenu: {
+        ...getItemMenuStyle({
             colorVerticalDevider: globalStyle.colors.menuFirstVerticalDivider
         }),
         lineHeight: `16px`,
@@ -46,8 +46,8 @@ const firstLevel = {
 const seconsLevel = {
     wrapper: { backgroundColor: globalStyle.colors.colorBlue },
     menu: getMenuStyle(),
-    link: {
-        ...getLinkStyle({
+    itemMenu: {
+        ...getItemMenuStyle({
             width: 176,
             colorVerticalDevider: globalStyle.colors.menuSecondVerticalDivider,
             color: globalStyle.colors.colorWhite
@@ -63,7 +63,7 @@ const seconsLevel = {
 
 
 
-const link = {
+const itemMenu = {
     iconLogo: {
         marginRight: 12
     },
@@ -76,5 +76,5 @@ const link = {
 export default {
     firstLevel,
     seconsLevel,
-    link
+    itemMenu
 }

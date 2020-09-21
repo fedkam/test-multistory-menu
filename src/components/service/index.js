@@ -68,7 +68,7 @@ export default class DataService {
     };
 
     getSubmenu = (name) => {
-        let foundMenuItem = this.DATA_FIRSTLEVEL_MENU.find((el) => el.name == name);
+        let foundMenuItem = this.DATA_FIRSTLEVEL_MENU.find((el) => el.name === name);
         if (foundMenuItem === undefined) return false;
         let submenu = this.DATA_SECONDLEVEL_MENU.filter((item) => item.recId && (item.recId === foundMenuItem._id)); //проверяем сущ .recId далее сравниваеем перееданный и текущий)
         if (submenu.length) {
