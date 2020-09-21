@@ -74,7 +74,7 @@ export default class DataService {
         if (submenu.length) {
             return submenu;
         } else {
-            return false;
+            return [];
         }
     }
 }

@@ -1,35 +1,34 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { TitleItemMenu } from './item';
 import { ReactComponent as IconOpenDD } from '../../../access/icon/arrow-openDD.svg';
 import { ReactComponent as IconCloseDD } from '../../../access/icon/arrow-closeDD.svg';
 
 
-export const DropDownItemMenu = ({ title = '', IconTitle, css = {} }) => {
+export const DropDownItemMenu = ({ id, title = '', IconTitle, css = {}, isOpenItemDropDown, setIsOpenItemDropDown }) => {
     const { itemMenu } = css;
-    const [isOpenDropDown, setIsOpenDropDown] = useState(false);
-    const memoSetIsOpenDropDown = useCallback(setIsOpenDropDown, []);
     return (
         <HeaderDD
+            id={id}
             title={title}
             IconTitle={IconTitle}
             css={itemMenu}
-            isOpenDropDown={isOpenDropDown}
-            setIsOpenDropDown={memoSetIsOpenDropDown}
+            isOpenItemDropDown={isOpenItemDropDown}
+            setIsOpenItemDropDown={setIsOpenItemDropDown}
         />
     )
 }
 
-const HeaderDD = ({ title = '', IconTitle, css = {}, isOpenDropDown, setIsOpenDropDown }) => (
+const HeaderDD = ({ id, title = '', IconTitle, css = {}, isOpenItemDropDown = false, setIsOpenItemDropDown = (() => 0) }) => (
     <div
         className={css}
-        onClick={() => setIsOpenDropDown(!isOpenDropDown)}
+        onClick={() => setIsOpenItemDropDown(id)}
     >
         <TitleItemMenu
             IconTitle={IconTitle}
             title={title}
         />
         <div>
-            {isOpenDropDown ? <IconCloseDD /> : <IconOpenDD />}
+            {isOpenItemDropDown ? <IconCloseDD /> : <IconOpenDD />}
         </div>
     </div>
 )

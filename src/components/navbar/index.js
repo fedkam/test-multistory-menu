@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import { Switch, Route, useParams } from 'react-router-dom';
 import DataServices from '../service';
 import { createUseStyles } from 'react-jss';
@@ -60,6 +60,25 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
     let { aciveMenuName } = useParams();
     let listSubmenu = getSubmenu(aciveMenuName);
     let { wrapper, menu, itemMenu } = useStyles_SecondLevelNavBar();
+    const [isOpenItemDropDown, setIsOpenItemDropDown] = useState(generateDropDownState());
+
+    function generateDropDownState() {
+        let stateItemsDropDown = {};
+        Array.isArray(listSubmenu) && listSubmenu.map((e, i) => {
+            stateItemsDropDown[e._id] = false;
+        });
+        return stateItemsDropDown;
+    };
+
+    function handleClickDropDown(itemId) {
+        setIsOpenItemDropDown((prevState) => {
+            const activeCurrent = prevState[itemId];   // запоминаем состояние
+            let newState = generateDropDownState(); //сброс всех dropDown
+            newState[itemId] = !activeCurrent;
+            return newState;
+        })
+    };
+
     return (
         <>
             {!!listSubmenu.length &&
@@ -68,8 +87,11 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
                         {listSubmenu.map((item) => (
                             <DropDownItemMenu
                                 key={item._id}
+                                id={item._id}
                                 title={item.label}
                                 IconTitle={item.icon}
+                                isOpenItemDropDown={isOpenItemDropDown[item._id]}
+                                setIsOpenItemDropDown={handleClickDropDown}
                                 css={{ itemMenu: itemMenu }}
                             />
                         ))}
@@ -79,10 +101,6 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
         </>
     )
 });
-
-
-
-NavBar.propTypes = {};
 
 
 
