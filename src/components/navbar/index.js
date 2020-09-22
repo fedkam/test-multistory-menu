@@ -60,9 +60,9 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
     let { aciveMenuName } = useParams();
     let listSubmenu = getSubmenu(aciveMenuName);
     let { wrapper, menu, itemMenu, active } = useStyles_SecondLevelNavBar();
-    const [isOpenItemDropDown, setIsOpenItemDropDown] = useState(generateDropDownState());
+    const [isOpenItemDropDown, setIsOpenItemDropDown] = useState(generateIsOpenDropDownState());
 
-    function generateDropDownState() {
+    function generateIsOpenDropDownState() {
         let stateItemsDropDown = {};
         Array.isArray(listSubmenu) && listSubmenu.map((e, i) => {
             stateItemsDropDown[e._id] = false;
@@ -73,7 +73,7 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
     function handleClickDropDown(itemId) {
         setIsOpenItemDropDown((prevState) => {
             const activeCurrent = prevState[itemId];   // запоминаем состояние
-            let newState = generateDropDownState(); //сброс всех dropDown
+            let newState = generateIsOpenDropDownState(); //сброс всех dropDown
             newState[itemId] = !activeCurrent;
             return newState;
         })

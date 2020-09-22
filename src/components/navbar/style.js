@@ -20,7 +20,7 @@ const getItemMenuStyle = ({ width, colorVerticalDevider, color }) => ({
     display: `flex`,
     alignItems: `center`,
     borderLeft: `1px solid ${colorVerticalDevider || 'grey'}`,
-    width: width || 197,
+    width: width || 213, //не по макету размер (тк радномный размер полей)
     height: `100%`,
     padding: `0 13px`,
     color: color || globalStyle.colors.baseColorText,
@@ -38,7 +38,12 @@ const getSvgStyle = ({ color }) => (
 
 
 const firstLevel = {
-    wrapper: { backgroundColor: globalStyle.colors.colorWhite },
+    wrapper: {
+        position: 'relative',
+        backgroundColor: globalStyle.colors.colorWhite,
+        boxShadow: `0px 1px 8px rgba(0, 0, 0, 0.12)`,
+        zIndex: 10
+    },
     menu: getMenuStyle(),
     itemMenu: {
         ...getItemMenuStyle({
@@ -56,7 +61,11 @@ const firstLevel = {
 
 
 const seconsLevel = {
-    wrapper: { backgroundColor: globalStyle.colors.colorBlue },
+    wrapper: {
+        position: 'relative',
+        backgroundColor: globalStyle.colors.colorBlue,
+        zIndex: 5
+    },
     menu: getMenuStyle(),
     itemMenu: {
         ...getItemMenuStyle({
