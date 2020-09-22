@@ -5,13 +5,13 @@ import { ReactComponent as IconCloseDD } from '../../../access/icon/arrow-closeD
 
 
 export const DropDownItemMenu = ({ id, title = '', IconTitle, css = {}, isOpenItemDropDown, setIsOpenItemDropDown }) => {
-    const { itemMenu } = css;
+    const headerStyle = `${css.itemMenu} ${isOpenItemDropDown ? css.active : ''}`;
     return (
         <HeaderDD
             id={id}
             title={title}
             IconTitle={IconTitle}
-            css={itemMenu}
+            css={headerStyle}
             isOpenItemDropDown={isOpenItemDropDown}
             setIsOpenItemDropDown={setIsOpenItemDropDown}
         />

@@ -1,18 +1,11 @@
-<svg width="48" height="21" viewBox="0 0 48 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.41553 1.11108H46.8124V19.2698H1.41553V1.11108Z" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M35.7775 19.2698H12.0314C7.14255 19.2698 3.23145 15.219 3.23145 10.4698V10.8889C3.23145 5.99998 7.28224 2.08887 12.0314 2.08887H35.7775C40.6664 2.08887 44.5775 6.13966 44.5775 10.8889C44.5775 15.7778 40.5267 19.2698 35.7775 19.2698Z" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<g clip-path="url(#clip0)">
-<path d="M23.7143 15.1429C24.6611 15.1429 25.4286 14.3754 25.4286 13.4286C25.4286 12.4819 24.6611 11.7144 23.7143 11.7144C22.7675 11.7144 22 12.4819 22 13.4286C22 14.3754 22.7675 15.1429 23.7143 15.1429Z" fill="#A8A8A8"/>
-</g>
-<g clip-path="url(#clip1)">
-<path d="M23.7143 10.0001C24.6611 10.0001 25.4286 9.23259 25.4286 8.28582C25.4286 7.33905 24.6611 6.57153 23.7143 6.57153C22.7675 6.57153 22 7.33905 22 8.28582C22 9.23259 22.7675 10.0001 23.7143 10.0001Z" fill="#A8A8A8"/>
-</g>
-<defs>
-<clipPath id="clip0">
-<rect width="3.42857" height="3.42857" fill="white" transform="translate(22 11.7144)"/>
-</clipPath>
-<clipPath id="clip1">
-<rect width="3.42857" height="3.42857" fill="white" transform="translate(22 6.57153)"/>
-</clipPath>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="21" fill="none" viewBox="0 0 48 21">
+  <g class="tank">
+    <g class="stroke">
+      <path stroke="#A8A8A8" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M1.416 1.111h45.396V19.27H1.416V1.11z"/>
+      <path stroke="#A8A8A8" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M35.778 19.27H12.032c-4.89 0-8.8-4.051-8.8-8.8v.419c0-4.89 4.05-8.8 8.8-8.8h23.746c4.889 0 8.8 4.05 8.8 8.8 0 4.889-4.051 8.38-8.8 8.38z"/>
+    </g>
+    <g class="fill">
+      <path fill="#A8A8A8" d="M23.714 15.143a1.714 1.714 0 100-3.429 1.714 1.714 0 000 3.429zM23.714 10a1.714 1.714 0 100-3.428 1.714 1.714 0 000 3.428z"/>
+    </g>
+  </g>
 </svg>

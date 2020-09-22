@@ -11,7 +11,8 @@ const getMenuStyle = () => (
         minWidth: 320,
         maxWidth: 1080,
         height: 69,
-        margin: `0 auto`
+        margin: `0 auto`,
+        userSelect: `none`
     }
 )
 
@@ -25,6 +26,15 @@ const getItemMenuStyle = ({ width, colorVerticalDevider, color }) => ({
     color: color || globalStyle.colors.baseColorText,
 })
 
+const getSvgStyle = ({ color }) => (
+    {
+        '& svg': {
+            '& .stroke path': { stroke: color },
+            '& .fill path': { fill: color }
+        }
+    }
+)
+
 
 
 const firstLevel = {
@@ -37,7 +47,9 @@ const firstLevel = {
         lineHeight: `16px`,
     },
     active: {
-        color: 'red'
+        color: globalStyle.colors.colorWhite,
+        backgroundColor: globalStyle.colors.colorBlue,
+        ...getSvgStyle({ color: globalStyle.colors.colorWhite })
     }
 }
 
@@ -55,9 +67,12 @@ const seconsLevel = {
         textTransform: `uppercase`,
         fontSize: 12,
         lineHeight: `15px`,
+        cursor: `pointer`
     },
     active: {
-        color: 'red'
+        color: globalStyle.colors.colorBlue,
+        backgroundColor: globalStyle.colors.colorWhite,
+        ...getSvgStyle({ color: globalStyle.colors.colorBlue })
     }
 }
 

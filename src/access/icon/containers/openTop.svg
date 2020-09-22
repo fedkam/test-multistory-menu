@@ -1,9 +1,7 @@
-<svg width="65" height="21" viewBox="0 0 65 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M62.081 2.27783V19.4512H1.41431V2.27783" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M21.5742 2.4646V18.1446" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M31.6548 2.4646V18.1446" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M11.6812 2.4646V18.1446" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M41.7339 2.4646V18.1446" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M51.8145 2.4646V18.1446" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M1.41431 2.05737H62.081" stroke="#A8A8A8" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="21" fill="none" viewBox="0 0 65 21">
+    <g class="openTop">
+        <g  class="stroke">
+            <path stroke="#A8A8A8" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M62.081 2.278V19.45H1.414V2.278m20.16.187v15.68m10.08-15.68v15.68M11.682 2.465v15.68m30.053-15.68v15.68m10.08-15.68v15.68M1.414 2.057h60.667" class="stroke"/>
+        </g>
+    </g>
 </svg>
