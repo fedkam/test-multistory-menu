@@ -3,8 +3,8 @@ import { Switch, Route, useParams } from 'react-router-dom';
 import DataServices from '../service';
 import { createUseStyles } from 'react-jss';
 import style from './style';
-import { LinkItemMenu } from './elements-navbar/link';
-import { DropDownItemMenu } from './elements-navbar/drop-down';
+import { Link } from './elements-navbar/link';
+import { DropDown } from './elements-navbar/drop-down';
 
 
 
@@ -15,9 +15,9 @@ const useStyles_SecondLevelNavBar = createUseStyles(style.seconsLevel);
 
 
 const NavBar = () => {
-    let dataMenu = new DataServices();
-    let menuList = dataMenu.getMenuList();
-    let memoGetSubmenu = useCallback(dataMenu.getSubmenu, []);
+    const dataMenu = new DataServices();
+    const menuList = dataMenu.getMenuList();
+    const memoGetSubmenu = useCallback(dataMenu.getSubmenu, []);
 
     return (
         <nav>
@@ -40,7 +40,7 @@ const FirstLevelNavBar = memo(({ listData }) => {
             <div className={menu}>
                 {!!listData.length &&
                     listData.map((item) => (
-                        <LinkItemMenu
+                        <Link
                             key={item._id}
                             href={item.name}
                             title={item.label}
@@ -85,7 +85,7 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
                 <div className={wrapper}>
                     <div className={menu}>
                         {listSubmenu.map((item) => (
-                            <DropDownItemMenu
+                            <DropDown
                                 key={item._id}
                                 id={item._id}
                                 title={item.label}

@@ -4,7 +4,7 @@ import { TitleItemMenu } from './item';
 
 
 
-export const LinkItemMenu = ({ href = '#', title = '', IconTitle, css = {} }) => {
+export const Link = ({ href = '#', title = '', IconTitle, css = {} }) => {
     const { itemMenu, active } = css;
     return (
         <NavLink

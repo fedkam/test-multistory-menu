@@ -165,5 +165,15 @@ export default class DataService {
         } else {
             return [];
         }
+    };
+
+    getDropdownList = (dropdownId) => {
+        const foundDropdownList = this.DATA_DROPDOWN_MENU.find((el) => el.recId === dropdownId);
+        if (foundDropdownList) {
+            return foundDropdownList;
+        } else {
+            return {};
+        }
     }
+
 }

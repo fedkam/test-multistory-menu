@@ -76,7 +76,7 @@ const itemMenu = {
 
 
 const dropdown = {
-    wrapper: {
+    dropdownWrapper: {
         position: 'relative',
         height: `100%`
     },
@@ -115,6 +115,14 @@ const dropdown = {
             borderRight: `7px solid transparent`,
             borderBottom: `7px solid ${globalStyle.colors.colorWhite}`
         }
+    },
+    menuItem: {
+        fontStyle: 400,
+        fontSize: 13,
+        color: `black`
+    },
+    menuSubItem: {
+
     }
 };
 
