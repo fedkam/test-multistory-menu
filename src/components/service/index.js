@@ -8,6 +8,7 @@ import { ReactComponent as IconFood } from '../../access/icon/food.svg';
 import { ReactComponent as IconGas } from '../../access/icon/gas.svg';
 
 
+
 export default class DataService {
     DATA_FIRSTLEVEL_MENU = [
         {
@@ -62,6 +63,94 @@ export default class DataService {
             icon: IconChemical
         }
     ];
+
+    DATA_DROPDOWN_MENU = [
+        {
+            _id: 3001,
+            recId: 301,
+            listLink: [
+                {
+                    label: 'Спирты пищевые',
+                    url: 'spirt'
+                }, {
+                    label: 'Масла',
+                    url: 'oils'
+                }, {
+                    label: 'Соки',
+                    url: 'juice'
+                }, {
+                    label: 'Концентраты соков',
+                    url: 'concentrates'
+                }, {
+                    label: 'Пищевые добавки',
+                    url: 'additive'
+                }, {
+                    label: 'Патока',
+                    url: 'syrup'
+                }, {
+                    label: 'Виноматериал',
+                    url: 'wine'
+                }, {
+                    label: 'Прочее',
+                    url: 'other'
+                }
+            ]
+        }, {
+            _id: 3003,
+            recId: 303,
+            listLink: [
+                {
+                    label: 'Спирты пищевые',
+                    subLink: [
+                        {
+                            label: 'Фенол расплавленный',
+                            url: 'phenol'
+                        }, {
+                            label: 'Олеум',
+                            url: 'oils'
+                        }, {
+                            label: 'Хлорная кислота',
+                            url: 'perchloricacid'
+                        }, {
+                            label: 'Нитрилакриловая кислота',
+                            url: 'nitrileacrylicacid'
+                        }, {
+                            label: 'Серная кислота',
+                            url: 'sulphuricacid'
+                        }, {
+                            label: 'Азотная кислота',
+                            url: 'nitricacid'
+                        }, {
+                            label: 'Ортофосфорная кислота',
+                            url: 'orthophosphoric acid'
+                        }
+                    ]
+                },
+                {
+                    label: 'Масла',
+                    subLink: []
+                }, {
+                    label: 'Соки',
+                    subLink: []
+                }, {
+                    label: 'Концентраты соков',
+                    subLink: []
+                }, {
+                    label: 'Пищевые добавки',
+                    url: []
+                }, {
+                    label: 'Патока',
+                    subLink: []
+                }, {
+                    label: 'Виноматериал',
+                    subLink: []
+                }, {
+                    label: 'Прочее',
+                    subLink: []
+                }
+            ]
+        }
+    ]
 
     getMenuList = () => {
         return this.DATA_FIRSTLEVEL_MENU;

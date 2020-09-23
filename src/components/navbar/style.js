@@ -10,7 +10,7 @@ const getMenuStyle = () => (
         alignItems: `center`, //избыточно
         minWidth: 320,
         maxWidth: 1080,
-        height: 69,
+        height: globalStyle.size.heightMenuLine,
         margin: `0 auto`,
         userSelect: `none`
     }
@@ -24,16 +24,10 @@ const getItemMenuStyle = ({ width, colorVerticalDevider, color }) => ({
     height: `100%`,
     padding: `0 13px`,
     color: color || globalStyle.colors.baseColorText,
+    transition: `color .2s, backgroundColor .2s`
 })
 
-const getSvgStyle = ({ color }) => (
-    {
-        '& svg': {
-            '& .stroke path': { stroke: color },
-            '& .fill path': { fill: color }
-        }
-    }
-)
+
 
 
 
@@ -54,7 +48,7 @@ const firstLevel = {
     active: {
         color: globalStyle.colors.colorWhite,
         backgroundColor: globalStyle.colors.colorBlue,
-        ...getSvgStyle({ color: globalStyle.colors.colorWhite })
+        ...globalStyle.functions.getSvgStyle({ color: globalStyle.colors.colorWhite })
     }
 }
 
@@ -66,23 +60,7 @@ const seconsLevel = {
         backgroundColor: globalStyle.colors.colorBlue,
         zIndex: 5
     },
-    menu: getMenuStyle(),
-    itemMenu: {
-        ...getItemMenuStyle({
-            width: 176,
-            colorVerticalDevider: globalStyle.colors.menuSecondVerticalDivider,
-            color: globalStyle.colors.colorWhite
-        }),
-        textTransform: `uppercase`,
-        fontSize: 12,
-        lineHeight: `15px`,
-        cursor: `pointer`
-    },
-    active: {
-        color: globalStyle.colors.colorBlue,
-        backgroundColor: globalStyle.colors.colorWhite,
-        ...getSvgStyle({ color: globalStyle.colors.colorBlue })
-    }
+    menu: getMenuStyle()
 }
 
 
@@ -97,8 +75,54 @@ const itemMenu = {
 
 
 
+const dropdown = {
+    wrapper: {
+        position: 'relative',
+        height: `100%`
+    },
+    header: {
+        ...getItemMenuStyle({
+            width: globalStyle.size.widthItemFirstLevelMenu,
+            colorVerticalDevider: globalStyle.colors.menuSecondVerticalDivider,
+            color: globalStyle.colors.colorWhite
+        }),
+        textTransform: `uppercase`,
+        fontSize: 12,
+        lineHeight: `15px`,
+        cursor: `pointer`,
+    },
+    activeHeader: {
+        color: globalStyle.colors.colorBlue,
+        backgroundColor: globalStyle.colors.lightGray,
+        ...globalStyle.functions.getSvgStyle({ color: globalStyle.colors.colorBlue })
+    },
+    menuWrapper: {
+        position: `absolute`,
+        top: globalStyle.size.heightMenuLine + 3
+    },
+    menu: {
+        position: 'relative',
+        background: globalStyle.colors.colorWhite,
+        borderRadius: 4,
+        padding: 16,
+        minWidth: globalStyle.size.widthItemFirstLevelMenu,
+        '&:before': {
+            content: `''`,
+            position: `absolute`,
+            top: `-7px`,
+            left: globalStyle.size.widthItemFirstLevelMenu / 2 - 3,
+            borderLeft: `7px solid transparent`,
+            borderRight: `7px solid transparent`,
+            borderBottom: `7px solid ${globalStyle.colors.colorWhite}`
+        }
+    }
+};
+
+
+
 export default {
     firstLevel,
     seconsLevel,
-    itemMenu
+    itemMenu,
+    dropdown
 }

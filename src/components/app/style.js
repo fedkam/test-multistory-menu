@@ -5,6 +5,8 @@ export const style = {
         fontFamily: globalStyle.font.fontFamily,
         fontWidth: globalStyle.font.fontWeight,
         fontSize: globalStyle.font.fontSize,
-        color: globalStyle.colors.baseColorText
+        color: globalStyle.colors.baseColorText,
+        background: `grey`,
+        height: 500,        
     }
 }

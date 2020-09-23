@@ -59,7 +59,7 @@ const FirstLevelNavBar = memo(({ listData }) => {
 const SecondLevelNavBar = memo(({ getSubmenu }) => {
     let { aciveMenuName } = useParams();
     let listSubmenu = getSubmenu(aciveMenuName);
-    let { wrapper, menu, itemMenu, active } = useStyles_SecondLevelNavBar();
+    let { wrapper, menu } = useStyles_SecondLevelNavBar();
     const [isOpenItemDropDown, setIsOpenItemDropDown] = useState(generateIsOpenDropDownState());
 
     function generateIsOpenDropDownState() {
@@ -92,7 +92,6 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
                                 IconTitle={item.icon}
                                 isOpenItemDropDown={isOpenItemDropDown[item._id]}
                                 setIsOpenItemDropDown={handleClickDropDown}
-                                css={{ itemMenu: itemMenu, active: active }}
                             />
                         ))}
                     </div>
