@@ -8,7 +8,7 @@ import { ReactComponent as IconFood } from '../../access/icon/food.svg';
 import { ReactComponent as IconGas } from '../../access/icon/gas.svg';
 
 
-
+// временная заглушка, заменить на  json-server
 export default class DataService {
     DATA_FIRSTLEVEL_MENU = [
         {
