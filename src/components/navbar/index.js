@@ -4,8 +4,8 @@ import DataServices from '../service';
 import { createUseStyles } from 'react-jss';
 import style from './style';
 import { Link } from './elements-navbar/link';
-import { DropDown } from './elements-navbar/drop-down';
-
+import { DropDownMenu } from './elements-navbar/drop-down';
+import { TitleItemMenu } from './elements-navbar/item';
 
 
 const useStyles_FirstLevelNavBar = createUseStyles(style.firstLevel);
@@ -42,11 +42,14 @@ const FirstLevelNavBar = memo(({ listData }) => {
                     listData.map((item) => (
                         <Link
                             key={item._id}
-                            href={item.name}
-                            title={item.label}
-                            IconTitle={item.icon}
-                            css={{ itemMenu: itemMenu, active: active }}
-                        />
+                            href={`/${item.name}`}
+                            css={{ link: itemMenu, activeLink: active }}
+                        >
+                            <TitleItemMenu
+                                IconTitle={item.icon}
+                                title={item.label}
+                            />
+                        </Link>
                     ))
                 }
             </div>
@@ -85,7 +88,7 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
                 <div className={wrapper}>
                     <div className={menu}>
                         {listSubmenu.map((item) => (
-                            <DropDown
+                            <DropDownMenu
                                 key={item._id}
                                 id={item._id}
                                 title={item.label}

@@ -9,6 +9,7 @@ const colors = {
   colorWhite: `#ffffff`,
   lightGray: `#e8ebee`,
   colorBlue: `#144f7f`,
+  darkBlue: `#123653`,
   menuFirstVerticalDivider: `rgba(0, 0, 0, 0.1)`,
   menuSecondVerticalDivider: `rgba(255, 255, 255, 0.15)`
 };

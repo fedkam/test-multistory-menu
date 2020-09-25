@@ -137,7 +137,7 @@ export default class DataService {
                     subLink: []
                 }, {
                     label: 'Пищевые добавки',
-                    url: []
+                    subLink: []
                 }, {
                     label: 'Патока',
                     subLink: []

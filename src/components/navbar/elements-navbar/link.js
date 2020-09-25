@@ -1,22 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { TitleItemMenu } from './item';
 
 
 
-export const Link = ({ href = '#', title = '', IconTitle, css = {} }) => {
-    const { itemMenu, active } = css;
+export const Link = ({ href = '#', title = '', IconTitle, css = {}, children, exact = false }) => {
+    const link = css.link;
+    const activeLink = css.activeLink;
     return (
         <NavLink
             to={href}
-            className={itemMenu}
-            activeClassName={active}
-            exact
+            className={link}
+            activeClassName={activeLink}
+            exact={exact}
         >
-            <TitleItemMenu
-                IconTitle={IconTitle}
-                title={title}
-            />
+            {children}
         </NavLink>
     )
 }

@@ -104,7 +104,7 @@ const dropdown = {
         position: 'relative',
         background: globalStyle.colors.colorWhite,
         borderRadius: 4,
-        padding: 16,
+        padding: `11px 16px`,
         minWidth: globalStyle.size.widthItemFirstLevelMenu,
         '&:before': {
             content: `''`,
@@ -117,9 +117,17 @@ const dropdown = {
         }
     },
     menuItem: {
-        fontStyle: 400,
+        display: 'block',
+        width: `100%`,
+        padding: `5px 0px`,
+        fontWeight: 400,
         fontSize: 13,
+        lineHeight: `15px`,
         color: `black`
+    },
+    activeMenuItem: {
+        fontWeight: 500,
+        color: globalStyle.colors.darkBlue,
     },
     menuSubItem: {
 

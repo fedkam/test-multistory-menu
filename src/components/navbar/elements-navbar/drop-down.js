@@ -5,15 +5,17 @@ import { ReactComponent as IconCloseDD } from '../../../access/icon/arrow-closeD
 import { createUseStyles } from 'react-jss';
 import style from '../style';
 import DataServices from '../../service';
-
+import { Link } from './link';
+import { useRouteMatch } from 'react-router-dom';
 
 const useStyles_Dropdown = createUseStyles(style.dropdown);
 
 
 
-export const DropDown = ({ id, title = '', IconTitle, isOpenItemDropDown, setIsOpenItemDropDown }) => {
-    const { dropdownWrapper, header, activeHeader, menuWrapper, menu, menuItem, menuSubItem } = useStyles_Dropdown();
+export const DropDownMenu = ({ id, title = '', IconTitle, isOpenItemDropDown, setIsOpenItemDropDown }) => {
+    const { dropdownWrapper, header, activeHeader, menuWrapper, menu, menuItem, activeMenuItem, menuSubItem } = useStyles_Dropdown();
     const headerStyle = `${header} ${isOpenItemDropDown ? activeHeader : ''}`;
+    const { url } = useRouteMatch();
     return (
         <div className={dropdownWrapper}>
             <HeaderDD
@@ -27,10 +29,13 @@ export const DropDown = ({ id, title = '', IconTitle, isOpenItemDropDown, setIsO
             {isOpenItemDropDown &&
                 <MenuDD
                     recId={id}
+                    currentUrl={url}
+                    setIsOpenItemDropDown={setIsOpenItemDropDown}
                     css={{
                         menuWrapper: menuWrapper,
                         menu: menu,
                         menuItem: menuItem,
+                        activeMenuItem: activeMenuItem,
                         menuSubItem: menuSubItem
                     }}
                 />
@@ -58,26 +63,35 @@ const HeaderDD = ({ id, title = '', IconTitle, css = {}, isOpenItemDropDown = fa
 
 
 
-const MenuDD = ({ recId, css = {} }) => {
+const MenuDD = ({ recId, currentUrl = '#', setIsOpenItemDropDown, css = {} }) => {
     const dataMenu = new DataServices();   // заменить на обращение json-server
     const dropdownList = dataMenu.getDropdownList(recId);
     return (
         <div className={css.menuWrapper}>
-            <div className={css.menu}>
-                <LinkDD
-                    css={{ menuItem: css.menuItem, menuSubItem: css.menuSubItem}}
-                />
+            <div
+                className={css.menu}
+                onClick={() => setIsOpenItemDropDown(recId)}
+            >
+                {
+                    dropdownList && dropdownList.listLink && dropdownList.listLink.map((item, index) => {
+                        if (item.subLink) {
+                            console.log(`subLink`)
+                        } else {
+                            return (
+                                <Link
+                                    href={`${currentUrl}/${item.url}`}
+                                    key={index}
+                                    css={{ link: css.menuItem, activeLink: css.activeMenuItem }}
+                                    exact                                    
+                                >
+                                    <p>{item.label}</p>
+                                </Link>
+                            )
+                        }
+                    })
+                }
             </div>
         </div>
     )
 }
 
-
-
-const LinkDD = ({ css = {} }) => {
-    return (
-        <div className={css.menuItem}>
-            <p>sdasdasdasdasdорпаорпаоопаsd</p>
-        </div>
-    )
-}
