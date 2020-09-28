@@ -1,10 +1,9 @@
 import React, { memo, useState, useCallback } from 'react';
-import { Switch, Route, useParams } from 'react-router-dom';
+import { Switch, Route, NavLink, useParams } from 'react-router-dom';
 import DataServices from '../service';
 import { createUseStyles } from 'react-jss';
 import style from './style';
-import { Link } from './elements-navbar/link';
-import { DropDownMenu } from './elements-navbar/drop-down';
+import { DropDownMenu } from './elements-navbar/drop-down-menu';
 import { TitleItemMenu } from './elements-navbar/item';
 
 
@@ -40,16 +39,17 @@ const FirstLevelNavBar = memo(({ listData }) => {
             <div className={menu}>
                 {!!listData.length &&
                     listData.map((item) => (
-                        <Link
+                        <NavLink
                             key={item._id}
-                            href={`/${item.name}`}
-                            css={{ link: itemMenu, activeLink: active }}
+                            to={`/${item.name}`}
+                            className={itemMenu}
+                            activeClassName={active}
                         >
                             <TitleItemMenu
                                 IconTitle={item.icon}
                                 title={item.label}
                             />
-                        </Link>
+                        </NavLink>
                     ))
                 }
             </div>

@@ -5,15 +5,15 @@ import { ReactComponent as IconCloseDD } from '../../../access/icon/arrow-closeD
 import { createUseStyles } from 'react-jss';
 import style from '../style';
 import DataServices from '../../service';
-import { Link } from './link';
-import { useRouteMatch } from 'react-router-dom';
+import { NavLink, useRouteMatch } from 'react-router-dom';
+import DropDownItemSubmenu from './drop-down-submenu';
 
-const useStyles_Dropdown = createUseStyles(style.dropdown);
+const useStyles_DropdownMenu = createUseStyles(style.dropdownMenu);
 
 
 
 export const DropDownMenu = ({ id, title = '', IconTitle, isOpenItemDropDown, setIsOpenItemDropDown }) => {
-    const { dropdownWrapper, header, activeHeader, menuWrapper, menu, menuItem, activeMenuItem, menuSubItem } = useStyles_Dropdown();
+    const { dropdownWrapper, header, activeHeader, menuWrapper, menu, menuItem, activeMenuItem, menuSubItem } = useStyles_DropdownMenu();
     const headerStyle = `${header} ${isOpenItemDropDown ? activeHeader : ''}`;
     const { url } = useRouteMatch();
     return (
@@ -75,17 +75,23 @@ const MenuDD = ({ recId, currentUrl = '#', setIsOpenItemDropDown, css = {} }) =>
                 {
                     dropdownList && dropdownList.listLink && dropdownList.listLink.map((item, index) => {
                         if (item.subLink) {
-                            console.log(`subLink`)
+                            return (
+                                <DropDownItemSubmenu
+                                    key={index}
+                                    currentUrl={currentUrl}
+                                    item={item}
+                                />)
                         } else {
                             return (
-                                <Link
-                                    href={`${currentUrl}/${item.url}`}
+                                <NavLink
                                     key={index}
-                                    css={{ link: css.menuItem, activeLink: css.activeMenuItem }}
-                                    exact                                    
+                                    to={`${currentUrl}/${item.url}`}
+                                    className={css.menuItem}
+                                    activeClassName={css.activeMenuItem}
+                                    exact
                                 >
                                     <p>{item.label}</p>
-                                </Link>
+                                </NavLink>
                             )
                         }
                     })

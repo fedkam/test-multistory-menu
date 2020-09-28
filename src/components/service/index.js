@@ -100,7 +100,7 @@ export default class DataService {
             recId: 303,
             listLink: [
                 {
-                    label: 'Спирты пищевые',
+                    label: 'Кислоты',
                     subLink: [
                         {
                             label: 'Фенол расплавленный',
@@ -127,22 +127,22 @@ export default class DataService {
                     ]
                 },
                 {
-                    label: 'Масла',
+                    label: 'Щелочи',
                     subLink: []
                 }, {
-                    label: 'Соки',
+                    label: 'Спирты',
                     subLink: []
                 }, {
-                    label: 'Концентраты соков',
+                    label: 'Растворители',
                     subLink: []
                 }, {
-                    label: 'Пищевые добавки',
+                    label: 'Соли',
                     subLink: []
                 }, {
-                    label: 'Патока',
+                    label: 'Эфиры',
                     subLink: []
                 }, {
-                    label: 'Виноматериал',
+                    label: 'Хлориды',
                     subLink: []
                 }, {
                     label: 'Прочее',

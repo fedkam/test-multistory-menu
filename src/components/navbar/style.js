@@ -27,6 +27,21 @@ const getItemMenuStyle = ({ width, colorVerticalDevider, color }) => ({
     transition: `color .2s, backgroundColor .2s`
 })
 
+const getDropdownItemStyle = () => ({
+    display: 'block',
+    width: `100%`,
+    padding: `5px 0px`,
+    fontWeight: 400,
+    fontSize: 13,
+    lineHeight: `15px`,
+    color: `black`
+})
+
+const getDropdownActiveItemStyle = () => ({
+    fontWeight: 500,
+    color: globalStyle.colors.darkBlue
+})
+
 
 
 
@@ -75,7 +90,7 @@ const itemMenu = {
 
 
 
-const dropdown = {
+const dropdownMenu = {
     dropdownWrapper: {
         position: 'relative',
         height: `100%`
@@ -116,23 +131,34 @@ const dropdown = {
             borderBottom: `7px solid ${globalStyle.colors.colorWhite}`
         }
     },
-    menuItem: {
-        display: 'block',
-        width: `100%`,
-        padding: `5px 0px`,
-        fontWeight: 400,
-        fontSize: 13,
-        lineHeight: `15px`,
-        color: `black`
-    },
-    activeMenuItem: {
-        fontWeight: 500,
-        color: globalStyle.colors.darkBlue,
-    },
-    menuSubItem: {
-
-    }
+    menuItem: getDropdownItemStyle(),
+    activeMenuItem: getDropdownActiveItemStyle()
 };
+
+
+
+const dropdownSubmenu = {
+    menuItemWrapper: {
+        display: `flex`
+    },
+    menuItem: {
+        ...getDropdownItemStyle(),
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: 100,
+        minWidth: 100
+    },
+    hoverMenuItem: {
+        ...getDropdownActiveItemStyle(),
+        ...globalStyle.functions.getSvgStyle({ color: globalStyle.colors.darkBlue })
+    },
+    listLinks:{
+        display: 'block',
+        textDecoration: `underline`,
+        color: globalStyle.colors.darkBlue,
+    }
+}
 
 
 
@@ -140,5 +166,6 @@ export default {
     firstLevel,
     seconsLevel,
     itemMenu,
-    dropdown
+    dropdownMenu,
+    dropdownSubmenu
 }

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5" height="10" fill="none" viewBox="0 0 5 10">
+  <g class="arrow-hover">
+    <g class="fill">
+      <path fill="#000" d="M4.824 5.357L.777 9.852a.424.424 0 01-.644 0 .544.544 0 010-.713L3.86 5 .134.861a.545.545 0 010-.713.424.424 0 01.643 0l4.047 4.495a.55.55 0 010 .714z"/>
+    </g>
+  </g>
+</svg>
