@@ -67,7 +67,7 @@ const SecondLevelNavBar = memo(({ getSubmenu }) => {
 
     function generateIsOpenDropDownState() {
         let stateItemsDropDown = {};
-        Array.isArray(listSubmenu) && listSubmenu.map((e, i) => {
+        Array.isArray(listSubmenu) && listSubmenu.map((e) => {
             stateItemsDropDown[e._id] = false;
         });
         return stateItemsDropDown;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { TitleItemMenu } from './item';
 import { ReactComponent as IconOpenDD } from '../../../access/icon/arrow-openDD.svg';
 import { ReactComponent as IconCloseDD } from '../../../access/icon/arrow-closeDD.svg';
@@ -6,7 +6,7 @@ import { createUseStyles } from 'react-jss';
 import style from '../style';
 import DataServices from '../../service';
 import { NavLink, useRouteMatch } from 'react-router-dom';
-import DropDownItemSubmenu from './drop-down-submenu';
+import DropDownSubmenu from './drop-down-submenu';
 
 const useStyles_DropdownMenu = createUseStyles(style.dropdownMenu);
 
@@ -65,7 +65,13 @@ const HeaderDD = ({ id, title = '', IconTitle, css = {}, isOpenItemDropDown = fa
 
 const MenuDD = ({ recId, currentUrl = '#', setIsOpenItemDropDown, css = {} }) => {
     const dataMenu = new DataServices();   // заменить на обращение json-server
-    const dropdownList = dataMenu.getDropdownList(recId);
+    let dropdownList = dataMenu.getDropdownList(recId);
+    dropdownList = dropdownList && dropdownList.listLink;
+    const isMultilevelMenuList = useMemo(() => (
+        dropdownList &&
+        dropdownList.find((item) => item.subLink)
+    ), [dropdownList]);
+
     return (
         <div className={css.menuWrapper}>
             <div
@@ -73,6 +79,28 @@ const MenuDD = ({ recId, currentUrl = '#', setIsOpenItemDropDown, css = {} }) =>
                 onClick={() => setIsOpenItemDropDown(recId)}
             >
                 {
+                    isMultilevelMenuList &&
+                    <DropDownSubmenu
+                        currentUrl={currentUrl}
+                        dropdownList={dropdownList}
+                    />
+                }
+                {
+                    //без многоуровневого меню
+                    !isMultilevelMenuList &&
+                    dropdownList && dropdownList.map((item, index) => (
+                        <NavLink
+                            key={index}
+                            to={`${currentUrl}/${item.url}`}
+                            className={css.menuItem}
+                            activeClassName={css.activeMenuItem}
+                            exact
+                        >
+                            <p>{item.label}</p>
+                        </NavLink>
+                    ))
+                }
+                {/* {
                     dropdownList && dropdownList.listLink && dropdownList.listLink.map((item, index) => {
                         if (item.subLink) {
                             return (
@@ -95,7 +123,7 @@ const MenuDD = ({ recId, currentUrl = '#', setIsOpenItemDropDown, css = {} }) =>
                             )
                         }
                     })
-                }
+                } */}
             </div>
         </div>
     )

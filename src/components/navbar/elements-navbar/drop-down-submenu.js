@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ReactComponent as IconHoverDD } from '../../../access/icon/arrow-hoverDD.svg';
 import { createUseStyles } from 'react-jss';
 import style from '../style';
@@ -10,43 +10,67 @@ const useStyles_DropdownSubmenu = createUseStyles(style.dropdownSubmenu);
 
 
 
-const DropDownItemSubmenu = ({ item, currentUrl }) => {
+const DropDownSubmenu = ({ dropdownList, currentUrl }) => {
     const { menuItemWrapper, menuItem, hoverMenuItem, listLinks } = useStyles_DropdownSubmenu();
-    const [isHover, setIsHover] = useState(false);
-    const headerStyle = `${menuItem} ${isHover ? hoverMenuItem : ''}`;
+    const [isHover, setIsHover] = useState();
+    const memoSetIsHover = useCallback(setIsHover, []);
+
     return (
-        <>
-            <div
-                className={menuItemWrapper}
-                onMouseEnter={() => setIsHover(true)}
-                onMouseLeave={() => setIsHover(false)}
-            >
-                <HeaderDD
-                    label={item.label}
-                    css={{ headerStyle: headerStyle }}
-                />
-                {true &&
-                    <ListLinksDD
-                        currentUrl={currentUrl}
-                        links={item.subLink}
-                        css={{ listLinks: listLinks }}
+        <div onMouseLeave={() => setIsHover()}>
+            <div>
+                {dropdownList.map((item, index) => (
+                    <HeaderDD
+                        key={index}
+                        id={index}
+                        label={item.label}
+                        isHover={isHover}
+                        setIsHover={memoSetIsHover}
+                        css={{ menuItem: menuItem, hoverMenuItem: hoverMenuItem }}
                     />
-                }
+                ))}
             </div>
-        </>
+            <div>
+
+            </div>
+        </div>
+        // <>
+        //     <div
+        //         className={menuItemWrapper}
+        //         onMouseEnter={() => setIsHover(true)}
+        //         onMouseLeave={() => setIsHover(false)}
+        //     >
+        //         <HeaderDD
+        //             label={item.label}
+        //             css={{ headerStyle: headerStyle }}
+        //         />
+        //         {true &&
+        //             <ListLinksDD
+        //                 currentUrl={currentUrl}
+        //                 links={item.subLink}
+        //                 css={{ listLinks: listLinks }}
+        //             />
+        //         }
+        //     </div>
+        // </>
     )
 }
 
 
 
-const HeaderDD = ({ label = '', css = {} }) => (
-    <div className={css.headerStyle}>
-        <p>{label}</p>
-        <div>
-            <IconHoverDD />
+const HeaderDD = ({ id, label = '', setIsHover, isHover, css = {} }) => {
+    const headerStyle = `${css.menuItem} ${(isHover == id) ? css.hoverMenuItem : ''}`;
+    return (
+        <div
+            className={headerStyle}
+            onMouseEnter={() => setIsHover(id + '')}
+        >
+            <p>{label}</p>
+            <div>
+                <IconHoverDD />
+            </div>
         </div>
-    </div>
-);
+    )
+};
 
 
 
@@ -69,4 +93,4 @@ const ListLinksDD = ({ links, currentUrl, css = {} }) => (
 
 
 
-export default DropDownItemSubmenu;
+export default DropDownSubmenu;
