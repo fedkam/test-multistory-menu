@@ -100,6 +100,7 @@ export default class DataService {
             recId: 303,
             listLink: [
                 {
+                    _id: 30031,
                     label: 'Кислоты',
                     subLink: [
                         {
@@ -127,24 +128,31 @@ export default class DataService {
                     ]
                 },
                 {
+                    _id: 30032,
                     label: 'Щелочи',
                     subLink: []
                 }, {
+                    _id: 30033,
                     label: 'Спирты',
                     subLink: []
                 }, {
+                    _id: 30034,
                     label: 'Растворители',
                     subLink: []
                 }, {
+                    _id: 30035,
                     label: 'Соли',
                     subLink: []
                 }, {
+                    _id: 30036,
                     label: 'Эфиры',
                     subLink: []
                 }, {
+                    _id: 30037,
                     label: 'Хлориды',
                     subLink: []
                 }, {
+                    _id: 30038,
                     label: 'Прочее',
                     subLink: []
                 }

@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { ReactComponent as IconHoverDD } from '../../../access/icon/arrow-hoverDD.svg';
 import { createUseStyles } from 'react-jss';
 import style from '../style';
-import { array } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 
@@ -11,17 +10,23 @@ const useStyles_DropdownSubmenu = createUseStyles(style.dropdownSubmenu);
 
 
 const DropDownSubmenu = ({ dropdownList, currentUrl }) => {
-    const { menuItemWrapper, menuItem, hoverMenuItem, listLinks } = useStyles_DropdownSubmenu();
+    const { menuItemWrapper, menuItem, hoverMenuItem, listLinks, itemListLink } = useStyles_DropdownSubmenu();
     const [isHover, setIsHover] = useState();
     const memoSetIsHover = useCallback(setIsHover, []);
+    const getListLinks = isHover && dropdownList.find((e) => {
+        return e._id == isHover;
+    })
 
     return (
-        <div onMouseLeave={() => setIsHover()}>
+        <div
+            onMouseLeave={() => setIsHover()}
+            className={menuItemWrapper}
+        >
             <div>
-                {dropdownList.map((item, index) => (
+                {dropdownList.map((item) => (
                     <HeaderDD
-                        key={index}
-                        id={index}
+                        key={item._id}
+                        id={item._id}
                         label={item.label}
                         isHover={isHover}
                         setIsHover={memoSetIsHover}
@@ -29,29 +34,17 @@ const DropDownSubmenu = ({ dropdownList, currentUrl }) => {
                     />
                 ))}
             </div>
-            <div>
-
+            <div className={listLinks}>
+                {
+                    isHover &&
+                    <ListLinksDD
+                        currentUrl={currentUrl}
+                        links={getListLinks.subLink}
+                        css={{ itemListLink: itemListLink }}
+                    />
+                }
             </div>
-        </div>
-        // <>
-        //     <div
-        //         className={menuItemWrapper}
-        //         onMouseEnter={() => setIsHover(true)}
-        //         onMouseLeave={() => setIsHover(false)}
-        //     >
-        //         <HeaderDD
-        //             label={item.label}
-        //             css={{ headerStyle: headerStyle }}
-        //         />
-        //         {true &&
-        //             <ListLinksDD
-        //                 currentUrl={currentUrl}
-        //                 links={item.subLink}
-        //                 css={{ listLinks: listLinks }}
-        //             />
-        //         }
-        //     </div>
-        // </>
+        </div >
     )
 }
 
@@ -76,19 +69,17 @@ const HeaderDD = ({ id, label = '', setIsHover, isHover, css = {} }) => {
 
 const ListLinksDD = ({ links, currentUrl, css = {} }) => (
     Array.isArray(links) &&
-    <div className={css.listLinks}>
-        {links.map((item, index) => (
-            <NavLink
-                key={index}
-                to={`${currentUrl}/${item.url}`}
-                className={css.menuItem}
-                activeClassName={css.activeMenuItem}
-                exact
-            >
-                <p>{item.label}</p>
-            </NavLink>
-        ))}
-    </div>
+    links.map((item, index) => (
+        <NavLink
+            key={index}
+            to={`${currentUrl}/${item.url}`}
+            className={css.itemListLink}
+            //activeClassName={css.activeMenuItem}
+            exact
+        >
+            <p>{item.label}</p>
+        </NavLink>
+    ))
 )
 
 

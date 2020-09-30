@@ -153,10 +153,18 @@ const dropdownSubmenu = {
         ...getDropdownActiveItemStyle(),
         ...globalStyle.functions.getSvgStyle({ color: globalStyle.colors.darkBlue })
     },
-    listLinks:{
-        display: 'block',
+    listLinks: {
+        marginLeft: '36px',
         textDecoration: `underline`,
         color: globalStyle.colors.darkBlue,
+        margin: '5px 0px'
+    },
+    itemListLink: {
+        display: 'block',
+        padding: '3px 0px',
+        '&:first-child': { padding: 0 },
+        '&:last-child': { padding: 0 }
+
     }
 }
 
