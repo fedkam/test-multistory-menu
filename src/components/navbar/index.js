@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import style from './style';
 import { DropDownMenu } from './elements-navbar/drop-down-menu';
 import { TitleItemMenu } from './elements-navbar/item';
-
+import { HamburherButton } from './elements-navbar/hamburher-button';
 
 const useStyles_FirstLevelNavBar = createUseStyles(style.firstLevel);
 const useStyles_SecondLevelNavBar = createUseStyles(style.seconsLevel);
@@ -33,7 +33,7 @@ const NavBar = () => {
 
 
 const FirstLevelNavBar = memo(({ listData }) => {
-    let { wrapper, menu, itemMenu, active } = useStyles_FirstLevelNavBar();
+    const { wrapper, menu, itemMenu, active } = useStyles_FirstLevelNavBar();
     return (
         <div className={wrapper}>
             <div className={menu}>
@@ -52,6 +52,9 @@ const FirstLevelNavBar = memo(({ listData }) => {
                         </NavLink>
                     ))
                 }
+                <HamburherButton
+                    css={{ wrapper: wrapper }}
+                />
             </div>
         </div>
     )
@@ -62,7 +65,7 @@ const FirstLevelNavBar = memo(({ listData }) => {
 const SecondLevelNavBar = memo(({ getSubmenu }) => {
     let { aciveMenuName } = useParams();
     let listSubmenu = getSubmenu(aciveMenuName);
-    let { wrapper, menu } = useStyles_SecondLevelNavBar();
+    const { wrapper, menu } = useStyles_SecondLevelNavBar();
     const [isOpenItemDropDown, setIsOpenItemDropDown] = useState(generateIsOpenDropDownState());
 
     function generateIsOpenDropDownState() {

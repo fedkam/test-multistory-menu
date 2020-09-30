@@ -90,6 +90,18 @@ const itemMenu = {
 
 
 
+const hamburgerButton = {
+    wrapper:{
+        ...getItemMenuStyle({
+            width: 80,
+            colorVerticalDevider: globalStyle.colors.menuFirstVerticalDivider
+        }),
+        borderRight: `1px solid ${globalStyle.colors.menuFirstVerticalDivider || 'grey'}`,
+        justifyContent: 'center'
+    }
+}
+
+
 const dropdownMenu = {
     dropdownWrapper: {
         position: 'relative',
@@ -162,9 +174,8 @@ const dropdownSubmenu = {
     itemListLink: {
         display: 'block',
         padding: '3px 0px',
-        '&:first-child': { padding: 0 },
-        '&:last-child': { padding: 0 }
-
+        '&:first-child': { paddingTop: 0 },
+        '&:last-child': { paddingBottom: 0 }
     }
 }
 
@@ -174,6 +185,7 @@ export default {
     firstLevel,
     seconsLevel,
     itemMenu,
+    hamburgerButton,
     dropdownMenu,
     dropdownSubmenu
 }
