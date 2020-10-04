@@ -59,7 +59,10 @@ const firstLevel = {
             colorVerticalDevider: globalStyle.colors.menuFirstVerticalDivider
         }),
         lineHeight: `16px`,
-        backgroundColor: globalStyle.colors.colorWhite
+        backgroundColor: globalStyle.colors.colorWhite,
+        '&:last-child': {
+            borderRight: `1px solid ${globalStyle.colors.menuFirstVerticalDivider || 'grey'}`,
+        }
     },
     active: {
         color: globalStyle.colors.colorWhite,
@@ -119,12 +122,11 @@ const hamburgerButton = {
             colorVerticalDevider: globalStyle.colors.menuFirstVerticalDivider
         }),
         lineHeight: `16px`,
-        backgroundColor: globalStyle.colors.colorWhite
-    },
-    active: {
-        color: globalStyle.colors.colorWhite,
-        backgroundColor: globalStyle.colors.colorBlue,
-        ...globalStyle.functions.getSvgStyle({ color: globalStyle.colors.colorWhite })
+        backgroundColor: globalStyle.colors.colorWhite,
+        borderBottom: `1px solid ${globalStyle.colors.menuFirstVerticalDivider || 'grey'}`,
+        '&:last-child': {
+            borderBottom: `none`
+        }
     }
 }
 
