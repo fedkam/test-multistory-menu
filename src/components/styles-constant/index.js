@@ -16,7 +16,8 @@ const colors = {
 
 const size = {
   heightMenuLine: 69,
-  widthItemFirstLevelMenu: 176,
+  widthItemFirstLevelMenu: 213,
+  widthItemSecondLevelMenu: 176,
 }
 
 const functions = {
