@@ -82,7 +82,7 @@ const seconsLevel = {
     menu: {
         ...getMenuStyle(),
         flexWrap: `nowrap`,
-        overflow: `scroll`,
+        //overflow: `scroll`,
     }
 }
 
