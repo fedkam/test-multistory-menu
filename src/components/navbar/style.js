@@ -79,7 +79,11 @@ const seconsLevel = {
         backgroundColor: globalStyle.colors.colorBlue,
         zIndex: 5,
     },
-    menu: getMenuStyle()
+    menu: {
+        ...getMenuStyle(),
+        flexWrap: `nowrap`,
+        overflow: `scroll`,
+    }
 }
 
 
