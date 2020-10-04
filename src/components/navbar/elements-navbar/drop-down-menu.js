@@ -100,30 +100,6 @@ const MenuDD = ({ recId, currentUrl = '#', setIsOpenItemDropDown, css = {} }) =>
                         </NavLink>
                     ))
                 }
-                {/* {
-                    dropdownList && dropdownList.listLink && dropdownList.listLink.map((item, index) => {
-                        if (item.subLink) {
-                            return (
-                                <DropDownItemSubmenu
-                                    key={index}
-                                    currentUrl={currentUrl}
-                                    item={item}
-                                />)
-                        } else {
-                            return (
-                                <NavLink
-                                    key={index}
-                                    to={`${currentUrl}/${item.url}`}
-                                    className={css.menuItem}
-                                    activeClassName={css.activeMenuItem}
-                                    exact
-                                >
-                                    <p>{item.label}</p>
-                                </NavLink>
-                            )
-                        }
-                    })
-                } */}
             </div>
         </div>
     )

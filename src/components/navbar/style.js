@@ -16,12 +16,12 @@ const getMenuStyle = () => (
     }
 )
 
-const getItemMenuStyle = ({ width, colorVerticalDevider, color }) => ({
+const getItemMenuStyle = ({ width, height, colorVerticalDevider, color }) => ({
     display: `flex`,
     alignItems: `center`,
     borderLeft: `1px solid ${colorVerticalDevider || 'grey'}`,
     width: width || globalStyle.size.widthItemFirstLevelMenu, //не по макету размер (тк радномный размер полей)
-    height: `100%`,
+    height: height || `100%`,
     padding: `0 13px`,
     color: color || globalStyle.colors.baseColorText,
     transition: `color .2s, backgroundColor .2s`
@@ -92,14 +92,39 @@ const itemMenu = {
 
 
 const hamburgerButton = {
-    wrapper:{
+    wrapper: {
+        position: 'relative',
+        height: `100%`
+    },
+    button: {
         ...getItemMenuStyle({
             width: 80,
             colorVerticalDevider: globalStyle.colors.menuFirstVerticalDivider
         }),
         borderRight: `1px solid ${globalStyle.colors.menuFirstVerticalDivider || 'grey'}`,
         justifyContent: 'center',
+        backgroundColor: globalStyle.colors.colorWhite,
+        cursor: `pointer`,
+    },
+    menuWrapper: {
+        position: 'absolute',
+        right: 0,
+        display: `flex`,
+        flexDirection: `column`,
+        top: globalStyle.size.heightMenuLine
+    },
+    itemMenu: {
+        ...getItemMenuStyle({
+            height: globalStyle.size.heightMenuLine,
+            colorVerticalDevider: globalStyle.colors.menuFirstVerticalDivider
+        }),
+        lineHeight: `16px`,
         backgroundColor: globalStyle.colors.colorWhite
+    },
+    active: {
+        color: globalStyle.colors.colorWhite,
+        backgroundColor: globalStyle.colors.colorBlue,
+        ...globalStyle.functions.getSvgStyle({ color: globalStyle.colors.colorWhite })
     }
 }
 
@@ -152,7 +177,7 @@ const dropdownMenu = {
 
 
 const dropdownSubmenu = {
-    menuItemWrapper: {
+    menuWrapper: {
         display: `flex`
     },
     menuItem: {

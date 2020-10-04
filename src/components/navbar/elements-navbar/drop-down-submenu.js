@@ -10,7 +10,7 @@ const useStyles_DropdownSubmenu = createUseStyles(style.dropdownSubmenu);
 
 
 const DropDownSubmenu = ({ dropdownList, currentUrl }) => {
-    const { menuItemWrapper, menuItem, hoverMenuItem, listLinks, itemListLink } = useStyles_DropdownSubmenu();
+    const { menuWrapper, menuItem, hoverMenuItem, listLinks, itemListLink } = useStyles_DropdownSubmenu();
     const [isHover, setIsHover] = useState();
     const memoSetIsHover = useCallback(setIsHover, []);
     const getListLinks = isHover && dropdownList.find((e) => {
@@ -20,7 +20,7 @@ const DropDownSubmenu = ({ dropdownList, currentUrl }) => {
     return (
         <div
             onMouseLeave={() => setIsHover()}
-            className={menuItemWrapper}
+            className={menuWrapper}
         >
             <div>
                 {dropdownList.map((item) => (

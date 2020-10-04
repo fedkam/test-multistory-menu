@@ -86,9 +86,11 @@ const FirstLevelMenu = memo(({ listData }) => {
                         </NavLink>
                     ))
                 }
-                <HamburherButton
-                    css={{ wrapper: wrapper }}
-                />
+                {!!generatedHamburgerList.length &&
+                    <HamburherButton
+                        hamburgerList={generatedHamburgerList}
+                    />
+                }
             </div>
         </div>
     )
